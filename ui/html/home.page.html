@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CV-to-Cover-Letter Generator</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+        />
+        <script
+            src="https://unpkg.com/htmx.org@1.9.10"
+            integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <main class="container">
+            <nav>
+                <ul>
+                    <li><strong>CV Genie</strong></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+
+            <h1>Generate Your Cover Letter Instantly</h1>
+            <p>
+                Upload your CV, paste a job description, and let AI do the work.
+            </p>
+
+            <article>
+                <form>
+                    <label for="cv">1. Upload Your CV (PDF, DOCX)</label>
+                    <input type="file" id="cv" name="cv" />
+
+                    <label for="job-description"
+                        >2. Paste Job Description</label
+                    >
+                    <textarea
+                        id="job-description"
+                        name="job-description"
+                        rows="10"
+                        placeholder="Paste the full job description here..."
+                    ></textarea>
+
+                    <button type="submit">Generate Documents</button>
+                </form>
+            </article>
+
+            <section id="results-section">
+                <h2>Generated Documents</h2>
+                <article id="cover-letter-result">
+                    <h3>Cover Letter</h3>
+                    <pre><code>Your generated cover letter will appear here...</code></pre>
+                </article>
+                <article id="email-result">
+                    <h3>Application Email</h3>
+                    <pre><code>Your generated email will appear here...</code></pre>
+                </article>
+            </section>
+        </main>
+    </body>
+</html>
