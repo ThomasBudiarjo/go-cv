@@ -1,4 +1,4 @@
-// main.go
+// cmd/web/main.go
 package main
 
 import (
@@ -8,24 +8,23 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/thomasbudiarjo/go-cv/internal/handlers" // <-- Import your handlers
 )
 
 func main() {
-	// Initialize a new Chi router
 	r := chi.NewRouter()
-
-	// Use a logger middleware for handy request logging
 	r.Use(middleware.Logger)
 
-	// A route to serve our HTML page
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "./ui/html/home.page.html")
-	})
+	// Route for the home page, using our new handler
+	r.Get("/", handlers.HomePage)
+
+	// **New API Endpoint**
+	// This route will receive the POST request from our HTMX form
+	r.Post("/generate", handlers.GenerateDocuments)
 
 	port := ":8080"
 	fmt.Printf("Starting server on http://localhost%s\n", port)
 
-	// Start the server with the Chi router
 	if err := http.ListenAndServe(port, r); err != nil {
 		log.Fatal(err)
 	}

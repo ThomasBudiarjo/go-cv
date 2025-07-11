@@ -32,9 +32,15 @@
             </p>
 
             <article>
-                <form>
+                <form
+                    hx-post="/generate"
+                    hx-encoding="multipart/form-data"
+                    hx-target="#results-section"
+                    hx-swap="innerHTML"
+                    hx-indicator="#loading-spinner"
+                >
                     <label for="cv">1. Upload Your CV (PDF, DOCX)</label>
-                    <input type="file" id="cv" name="cv" />
+                    <input type="file" id="cv" name="cv" required />
 
                     <label for="job-description"
                         >2. Paste Job Description</label
@@ -44,11 +50,20 @@
                         name="job-description"
                         rows="10"
                         placeholder="Paste the full job description here..."
+                        required
                     ></textarea>
 
                     <button type="submit">Generate Documents</button>
                 </form>
             </article>
+
+            <div id="loading-spinner" class="htmx-indicator">
+                <progress></progress>
+            </div>
+
+            <section id="results-section">
+                <p><em>Your generated documents will appear here...</em></p>
+            </section>
 
             <section id="results-section">
                 <h2>Generated Documents</h2>
