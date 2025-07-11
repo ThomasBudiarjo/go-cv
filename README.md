@@ -55,10 +55,36 @@ The project plan is detailed in [app_plan.md](app_plan.md).
 *PDF and DOCX parsing shows helpful messages - TXT files work fully
 
 ### How to Run:
-```bash
-go run cmd/web/main.go
-```
-Visit: http://localhost:8082
+
+1. **Get Google AI Studio API Key:**
+   - Visit [Google AI Studio](https://aistudio.google.com/)
+   - Sign in with your Google account
+   - Click "Get API Key" and create a new key
+
+2. **Setup environment variables:**
+   ```bash
+   cp .env.example .env
+   ```
+   Edit the `.env` file and replace `your_api_key_here` with your actual API key:
+   ```
+   GOOGLE_AI_STUDIO_API_KEY=your_api_key_here
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   go mod tidy
+   ```
+
+4. **Run the application:**
+   ```bash
+   go run cmd/web/main.go
+   ```
+
+5. **Visit:** http://localhost:8082
+
+### Environment Setup:
+- **Required**: `GOOGLE_AI_STUDIO_API_KEY` - Your Google AI Studio API key
+- **File**: Copy `.env.example` to `.env` and add your credentials
 
 ### Technology Stack:
 - **Backend**: Go with Chi router
